@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GestaoTechApiApplication {
 
-    public static void main(String[] args) {SpringApplication.run(GestaoTechApiApplication.class, args);
+    public static void main(String[] args) {
+        SpringApplication.run(GestaoTechApiApplication.class, args);
     }
 
 }
