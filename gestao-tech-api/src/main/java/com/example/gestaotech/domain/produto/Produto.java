@@ -1,6 +1,7 @@
 package com.example.gestaotech.domain.produto;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,4 +22,10 @@ public class Produto {
     private String dsProduto;
     @Column(name = "VLPRODUTO")
     private Double vlProduto;
+
+    public Produto(ProdutoDto data) {
+        this.nmProduto = data.nmProduto();
+        this.dsProduto = data.dsProduto();
+        this.vlProduto = data.vlProduto();
+    }
 }

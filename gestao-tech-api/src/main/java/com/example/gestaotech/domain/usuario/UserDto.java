@@ -3,7 +3,7 @@ package com.example.gestaotech.domain.usuario;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record UsuarioDto(
+public record UserDto(
         @NotBlank(message = "Não é possível prosseguir sem nome.")
         String nmUser,
         @NotBlank(message = "Não é possível prosseguir sem email.")
