@@ -40,7 +40,7 @@ public class AuthenticationController {
     //Para fazer o cadastro de um usuário (todas as informações)
     @PostMapping("/cadastrar")
     public ResponseEntity cadastrar (@RequestBody @Valid RegisterDTO data){
-        if (this.userRepository.FindByEmUser(data.emUser()) != null)
+        if (this.userRepository.findByEmUser(data.emUser()) != null)
             return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.snUser());

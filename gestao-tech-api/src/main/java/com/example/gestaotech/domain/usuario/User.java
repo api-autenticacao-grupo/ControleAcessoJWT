@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -28,12 +27,11 @@ public class User implements UserDetails { //Criação da tabela User com as res
     @Column(name = "NMUSER")
     private String nmUser;
     @Column(name = "EMUSER")
-    @Email private String emUser;
+    private String emUser;
     @Column(name = "SNUSER")
     private String snUser;
     @Column(name = "CPFUSER")
-    @Pattern
-   (regexp = "\\d{11}") private String cpfUser;
+    private String cpfUser;
     @Column(name = "ROLEUSER")
     private UserRole roleUser;
 
@@ -53,10 +51,11 @@ public class User implements UserDetails { //Criação da tabela User com as res
         else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
-   @Override
+    @Override
     public String getPassword() {
         return "";
     }
+
 
     @Override
     public String getUsername() {
