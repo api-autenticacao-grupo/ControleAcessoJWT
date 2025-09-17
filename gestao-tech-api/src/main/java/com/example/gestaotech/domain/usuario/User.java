@@ -21,7 +21,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "TBUSER")
-public class User implements UserDetails {
+public class User implements UserDetails { //Criação da tabela User com as respectivas restrições.
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CDUSER")
     private Integer cdUser;
@@ -38,6 +38,15 @@ public class User implements UserDetails {
     private UserRole roleUser;
 
 
+    public User(UserRole roleUser, String cpfUser, String snUser, String emUser, String nmUser) {
+        this.roleUser = roleUser;
+        this.cpfUser = cpfUser;
+        this.snUser = snUser;
+        this.emUser = emUser;
+        this.nmUser = nmUser;
+    }
+
+    // Controle de hierarquia
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if(this.roleUser == UserRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN") , new SimpleGrantedAuthority("ROLE_USER"));
