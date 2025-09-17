@@ -1,8 +1,10 @@
 package com.example.gestaotech.controller;
 
 import com.example.gestaotech.domain.usuario.AuthenticationDTO;
+import com.example.gestaotech.domain.usuario.LoginResponseDTO;
 import com.example.gestaotech.domain.usuario.RegisterDTO;
 import com.example.gestaotech.domain.usuario.User;
+import com.example.gestaotech.infra.security.TokenService;
 import com.example.gestaotech.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +25,16 @@ public class AuthenticationController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private TokenService tokenService;
     //Para fazer o login de um usuário (email e senha)
     @PostMapping("/login")
     public ResponseEntity login (@RequestBody @Valid AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.emUser(), data.snUser());
         var auth = this.authenticationManager.authenticate(usernamePassword);
+        var token = tokenService.generateToken((User) auth.getPrincipal());
+        return ResponseEntity.ok(new LoginResponseDTO(token));
 
-        return ResponseEntity.ok().build();
     }
 
     //Para fazer o cadastro de um usuário (todas as informações)
