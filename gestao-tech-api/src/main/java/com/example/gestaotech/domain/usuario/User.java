@@ -38,12 +38,12 @@ public class User implements UserDetails { //Criação da tabela User com as res
     private UserRole roleUser;
 
 
-    public User(UserRole roleUser, String cpfUser, String snUser, String emUser, String nmUser) {
-        this.roleUser = roleUser;
+    public User(String nmUser, String cpfUser, String snUser, String emUser, UserRole roleUser) {
+        this.nmUser = nmUser;
         this.cpfUser = cpfUser;
         this.snUser = snUser;
         this.emUser = emUser;
-        this.nmUser = nmUser;
+        this.roleUser = roleUser;
     }
 
     // Controle de hierarquia
