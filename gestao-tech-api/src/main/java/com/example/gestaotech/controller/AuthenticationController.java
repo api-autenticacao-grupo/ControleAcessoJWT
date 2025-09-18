@@ -34,7 +34,6 @@ public class AuthenticationController {
         var auth = this.authenticationManager.authenticate(usernamePassword);
         var token = tokenService.generateToken((User) auth.getPrincipal());
         return ResponseEntity.ok(new LoginResponseDTO(token));
-
     }
 
     //Para fazer o cadastro de um usuário (todas as informações)
@@ -44,7 +43,7 @@ public class AuthenticationController {
             return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.snUser());
-        User newUser = new User(data.nmUser(), data.emUser(), data.cpfUser(), encryptedPassword, data.roleUser());
+        User newUser = new User(data.nmUser(), data.emUser(), encryptedPassword, data.cpfUser(),  data.roleUser());
 
         this.userRepository.save(newUser);
 
