@@ -27,7 +27,7 @@ public class AuthenticationController {
     private UserRepository userRepository;
     @Autowired
     private TokenService tokenService;
-    //Para fazer o login de um usuário (email e senha)
+    //Para fazer o login de um usuário (email e senha) com o retorno do token
     @PostMapping("/login")
     public ResponseEntity login (@RequestBody @Valid AuthenticationDTO data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.emUser(), data.snUser());

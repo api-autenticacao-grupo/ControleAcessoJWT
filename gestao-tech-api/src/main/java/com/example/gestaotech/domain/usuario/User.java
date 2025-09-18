@@ -26,7 +26,7 @@ public class User implements UserDetails { //Criação da tabela User com as res
     private Integer cdUser;
     @Column(name = "NMUSER")
     private String nmUser;
-    @Column(name = "EMUSER")
+    @Column(unique = true, name = "EMUSER")
     @Email private String emUser;
     @Column(name = "SNUSER")
     private String snUser;

@@ -1,5 +1,6 @@
 package com.example.gestaotech.domain.usuario;
 
+//Cria 2 roles de usuario
 public enum UserRole {
     ADMIN("admin"),
     USER("user");
